@@ -43,6 +43,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -89,19 +125,179 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+    <Content Include="Assets\Admin\css\style_admin.css" />
+    <Content Include="Assets\Admin\img\file.png" />
+    <Content Include="Assets\Admin\img\music.png" />
+    <Content Include="Assets\Admin\js\PNMedia.js" />
+    <Content Include="Assets\Admin\plugins\jquery-modal\css\jquery.modal.css" />
+    <Content Include="Assets\Admin\plugins\jquery-modal\css\jquery.modal.min.css" />
+    <Content Include="Assets\Admin\plugins\jquery-modal\js\jquery.modal.js" />
+    <Content Include="Assets\Admin\plugins\jquery-modal\js\jquery.modal.min.js" />
+    <Content Include="Assets\Admin\plugins\sweetalert\sweetalert-dev.js" />
+    <Content Include="Assets\Admin\plugins\sweetalert\sweetalert.css" />
+    <Content Include="Assets\Admin\plugins\sweetalert\sweetalert.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\license.txt" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\example\dialog.html" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Assets\Admin\plugins\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Assets\Admin\plugins\tinymce\tinymce.min.js" />
+    <Content Include="Assets\Admin\plugins\vue\vue.file-upload.js" />
+    <Content Include="Assets\Admin\plugins\vue\vue.js" />
+    <Content Include="Assets\Admin\plugins\vue\vue.pretty-bytes.js" />
+    <Content Include="Assets\Admin\sb-admin-2.css" />
+    <Content Include="Assets\Admin\sb-admin-2.js" />
+    <Content Include="Assets\Admin\sb-admin-2.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Assets\Admin\plugins\tinymce\langs\readme.md" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Media\index.cshtml" />
+    <Content Include="Views\CaSi\Create.cshtml" />
+    <Content Include="Views\CaSi\Delete.cshtml" />
+    <Content Include="Views\CaSi\Details.cshtml" />
+    <Content Include="Views\CaSi\Edit.cshtml" />
+    <Content Include="Views\CaSi\Index.cshtml" />
+    <Content Include="Views\Media\Select.cshtml" />
+    <Content Include="Views\BaiHat\Create.cshtml" />
+    <Content Include="Views\BaiHat\Delete.cshtml" />
+    <Content Include="Views\BaiHat\Details.cshtml" />
+    <Content Include="Views\BaiHat\Edit.cshtml" />
+    <Content Include="Views\BaiHat\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaiHatController.cs" />
+    <Compile Include="Controllers\CaSiController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\TacGiaController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Paginate.cs" />
+    <Compile Include="Migrations\201611071237302_database.cs" />
+    <Compile Include="Migrations\201611071237302_database.Designer.cs">
+      <DependentUpon>201611071237302_database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BaiHat.cs" />
+    <Compile Include="Models\CaSi.cs" />
+    <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\Media.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\TacGia.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Layout\_LayoutAdmin.cshtml" />
+    <Content Include="Views\TacGia\Create.cshtml" />
+    <Content Include="Views\TacGia\Delete.cshtml" />
+    <Content Include="Views\TacGia\Details.cshtml" />
+    <Content Include="Views\TacGia\Edit.cshtml" />
+    <Content Include="Views\TacGia\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,9 +306,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Assets\Admin\plugins\bootstrap-social\" />
+    <Folder Include="Assets\Admin\plugins\bootstrap\" />
+    <Folder Include="Assets\Admin\plugins\datatables-plugins\" />
+    <Folder Include="Assets\Admin\plugins\datatables-responsive\" />
+    <Folder Include="Assets\Admin\plugins\datatables\" />
+    <Folder Include="Assets\Admin\plugins\flot-tooltip\" />
+    <Folder Include="Assets\Admin\plugins\flot\" />
+    <Folder Include="Assets\Admin\plugins\font-awesome\" />
+    <Folder Include="Assets\Admin\plugins\jquery\" />
+    <Folder Include="Assets\Admin\plugins\metisMenu\" />
+    <Folder Include="Assets\Admin\plugins\morrisjs\" />
+    <Folder Include="Assets\Admin\plugins\raphael\" />
+    <Folder Include="Assets\Site\" />
+    <Folder Include="Content\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611071237302_database.resx">
+      <DependentUpon>201611071237302_database.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

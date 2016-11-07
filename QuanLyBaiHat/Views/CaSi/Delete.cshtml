@@ -1,0 +1,50 @@
+﻿@model QuanLyBaiHat.Models.CaSi
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
+}
+
+<div class="row clearfix row-box">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Tạo Bài Hát
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>@Html.ActionLink("Tạo Bài Hát", "Create")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body table-responsive">
+                <h3>Are you sure you want to delete this?</h3>
+                <div>
+                    <h5 style="color:aqua">@Html.DisplayNameFor(model => model.TenCS) : <span style="color:black">@Html.DisplayFor(model => model.TenCS)</span> </h5>
+
+                    <hr />
+                    <h5 style="color:aqua">@Html.DisplayNameFor(model => model.MaTo):</h5>
+                    <p>
+                        @Html.Raw(Model.MaTo)
+                    </p>  
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-default" /> |
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

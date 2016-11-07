@@ -1,0 +1,73 @@
+﻿@model QuanLyBaiHat.Models.CaSi
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
+}
+
+<div class="row clearfix row-box">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Tạo Bài Hát
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>@Html.ActionLink("Tạo Bài Hát", "Create")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body table-responsive">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>CaSi</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TenCS, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TenCS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenCS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaTo, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @if (Model != null)
+                                {
+                                    <textarea name="MaTo">Model.MaTo</textarea>
+
+                                }
+                                else
+                                {
+                                    <textarea name="MaTo"></textarea>
+                                }
+                                @Html.ValidationMessageFor(model => model.MaTo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

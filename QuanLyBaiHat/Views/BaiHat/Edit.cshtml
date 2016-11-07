@@ -1,0 +1,120 @@
+﻿@model QuanLyBaiHat.Models.BaiHat
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Layout/_LayoutAdmin.cshtml";
+}
+<div class="row clearfix row-box">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Sửa Bài Hát
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>@Html.ActionLink("Tạo Bài Hát", "Create")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body table-responsive">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MaBH)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TenBH, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TenBH, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenBH, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.url, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                <input class="form-control" value="@Model.url" type="text" name="url" img="url" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" onclick="open_get_data_media('url')" class="btn btn-success">Select</button>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.img, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-8">
+                                <input class="form-control" value="@Model.img" type="text" name="img" img="anh" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" onclick="open_get_data_media('anh')" class="btn btn-success">Select</button>
+                            </div>
+                                @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+                            
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <textarea name="NoiDung">@Model.NoiDung</textarea>
+                                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NamSX, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                               @{ var date = Model.NamSX.ToString("yyyy-MM-dd"); }
+                                <input type="date" name="NamSX" value="@date" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.NamSX, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HangSX, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.HangSX, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HangSX, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaCS, "MaCS", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("MaCS", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.MaCS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MaTG, "MaTG", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("MaTG", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.MaTG, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
