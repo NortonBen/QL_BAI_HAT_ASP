@@ -225,6 +225,10 @@
     <Content Include="Assets\Admin\sb-admin-2.css" />
     <Content Include="Assets\Admin\sb-admin-2.js" />
     <Content Include="Assets\Admin\sb-admin-2.min.css" />
+    <Content Include="Assets\Site\css\bootstrap.css" />
+    <Content Include="Assets\Site\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Site\js\bootstrap.js" />
+    <Content Include="Assets\Site\js\jquery-1.11.1.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Assets\Admin\plugins\tinymce\langs\readme.md" />
     <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
@@ -233,6 +237,15 @@
     <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Assets\Admin\plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Assets\Site\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\Site\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Site\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\Site\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\Site\fonts\FontAwesome.otf" />
+    <Content Include="Assets\Site\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\Site\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\Site\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\Site\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -259,21 +272,44 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Layout\_LayoutSite.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\login.cshtml" />
+    <Content Include="Views\Home\register.cshtml" />
+    <Content Include="Views\Single\Index.cshtml" />
+    <Content Include="Views\Slider\Create.cshtml" />
+    <Content Include="Views\Slider\Delete.cshtml" />
+    <Content Include="Views\Slider\Details.cshtml" />
+    <Content Include="Views\Slider\Edit.cshtml" />
+    <Content Include="Views\Slider\Index.cshtml" />
+    <Content Include="Views\Home\about.cshtml" />
+    <Content Include="Views\Loi\phanquyen.cshtml" />
+    <Content Include="Views\Loi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaiHatController.cs" />
     <Compile Include="Controllers\CaSiController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoiController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\PhanQuyen.cs" />
+    <Compile Include="Controllers\SingleController.cs" />
+    <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\TacGiaController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ActionMenu.cs" />
     <Compile Include="Helper\Paginate.cs" />
     <Compile Include="Migrations\201611071237302_database.cs" />
     <Compile Include="Migrations\201611071237302_database.Designer.cs">
       <DependentUpon>201611071237302_database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611080134132_add_table_slider.cs" />
+    <Compile Include="Migrations\201611080134132_add_table_slider.Designer.cs">
+      <DependentUpon>201611080134132_add_table_slider.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaiHat.cs" />
@@ -281,6 +317,7 @@
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Media.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Slider.cs" />
     <Compile Include="Models\TacGia.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -318,12 +355,16 @@
     <Folder Include="Assets\Admin\plugins\metisMenu\" />
     <Folder Include="Assets\Admin\plugins\morrisjs\" />
     <Folder Include="Assets\Admin\plugins\raphael\" />
-    <Folder Include="Assets\Site\" />
+    <Folder Include="Assets\Site\images\" />
     <Folder Include="Content\images\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611071237302_database.resx">
       <DependentUpon>201611071237302_database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611080134132_add_table_slider.resx">
+      <DependentUpon>201611080134132_add_table_slider.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

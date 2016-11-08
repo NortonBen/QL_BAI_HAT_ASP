@@ -1,0 +1,33 @@
+﻿@model QuanLyBaiHat.Models.BaiHat
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/_LayoutSite.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12" style="padding-bottom:50px">
+        <hr />
+        <div class="col-md-4">
+            <img class="img-responsive" style="max-height:200px" src="@Model.img" />
+
+        </div>
+        <div class="col-md-8">
+            <h4>@Model.TenBH</h4>
+            <audio src="@Model.url" controls>
+                <p>Your browser does not support the <code>audio</code> element.</p>
+            </audio>
+            <div class="col-md-12">
+                Ca Sĩ   : <span>@Model.CaSi.TenCS</span> 
+                <br />
+                Tác Giả : <span>@Model.TacGia.TenTG</span> 
+            </div>
+            <div class="col-md-12 content" style="margin-top: 20px">
+                Nội Dung:
+                <p>
+                    @Html.Raw(Model.NoiDung)
+                </p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+     </div>
+</div>

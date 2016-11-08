@@ -11,107 +11,107 @@ using QuanLyBaiHat.Models;
 namespace QuanLyBaiHat.Controllers
 {
     [PhanQuyen]
-    public class TacGiaController : Controller
+    public class SliderController : Controller
     {
         private DataContext db = new DataContext();
 
-        // GET: TacGia
+        // GET: Slider
         public ActionResult Index()
         {
-            return View(db.TacGias.ToList());
+            return View(db.Slider.ToList());
         }
 
-        // GET: TacGia/Details/5
+        // GET: Slider/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TacGia tacGia = db.TacGias.Find(id);
-            if (tacGia == null)
+            Slider slider = db.Slider.Find(id);
+            if (slider == null)
             {
                 return HttpNotFound();
             }
-            return View(tacGia);
+            return View(slider);
         }
 
-        // GET: TacGia/Create
+        // GET: Slider/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TacGia/Create
+        // POST: Slider/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaTG,TenTG,Mota")] TacGia tacGia)
+        public ActionResult Create([Bind(Include = "Id,url")] Slider slider)
         {
             if (ModelState.IsValid)
             {
-                db.TacGias.Add(tacGia);
+                db.Slider.Add(slider);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tacGia);
+            return View(slider);
         }
 
-        // GET: TacGia/Edit/5
+        // GET: Slider/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TacGia tacGia = db.TacGias.Find(id);
-            if (tacGia == null)
+            Slider slider = db.Slider.Find(id);
+            if (slider == null)
             {
                 return HttpNotFound();
             }
-            return View(tacGia);
+            return View(slider);
         }
 
-        // POST: TacGia/Edit/5
+        // POST: Slider/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaTG,TenTG,Mota")] TacGia tacGia)
+        public ActionResult Edit([Bind(Include = "Id,url")] Slider slider)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tacGia).State = EntityState.Modified;
+                db.Entry(slider).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tacGia);
+            return View(slider);
         }
 
-        // GET: TacGia/Delete/5
+        // GET: Slider/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TacGia tacGia = db.TacGias.Find(id);
-            if (tacGia == null)
+            Slider slider = db.Slider.Find(id);
+            if (slider == null)
             {
                 return HttpNotFound();
             }
-            return View(tacGia);
+            return View(slider);
         }
 
-        // POST: TacGia/Delete/5
+        // POST: Slider/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TacGia tacGia = db.TacGias.Find(id);
-            db.TacGias.Remove(tacGia);
+            Slider slider = db.Slider.Find(id);
+            db.Slider.Remove(slider);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

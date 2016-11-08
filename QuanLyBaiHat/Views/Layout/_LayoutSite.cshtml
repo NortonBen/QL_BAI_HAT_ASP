@@ -1,0 +1,139 @@
+﻿@using QuanLyBaiHat.Models;
+@using QuanLyBaiHat.Helper;
+@{ 
+    var data = Session["auth"];
+    User user = null;
+    List<Slider> sliders = null;
+    if(data != null)
+    {
+        user = (User)data;
+    }
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Assets/Site/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="~/Assets/Site/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Assets/Site/css/default.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Assets/Site/css/nivo-slider.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/Assets/Site/js/jquery-1.9.0.min.js"></script>
+    <script src="~/Assets/Site/js/jquery.nivo.slider.js"></script>
+    <script src="~/Assets/Site/js/bootstrap.js"></script>   
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider();
+        });
+    </script>
+    <!--nav-->
+    <script src='~/Assets/Site/js/jquery.color-RGBa-patch.js'></script>
+    <script src='~/Assets/Site/js/example.js'></script>
+</head>
+<body>
+    <div class="header-bg">
+        <div class="wrap">
+            <div class="h-bg">
+                <div class="header">
+                    <div class="header-top">
+                        <div class="enter">
+                            @if (user == null)
+                            {
+                                <a href="@Url.Action("login", "Home")">Log in</a> <span>|</span>
+                                <a href="@Url.Action("register", "Home")"> Sign up </a>
+                            }
+                            else
+                            {
+                                <a href="#">@user.username</a>  <span>|</span>
+                                <a href="@Url.Action("logout", "Home")">Log out </a>
+                            }
+
+
+                        </div>
+                        <div class="nav-wrap">
+                            <ul class="group" id="example-one">
+                                <li @ActionMenu.Action(Url.Action("index", "Home")) ><a href="@Url.Action("index", "Home")">Home</a></li>
+                                <li @ActionMenu.Action(Url.Action("about", "Home")) ><a href="@Url.Action("about", "Home")">About</a></li>
+                            </ul>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="header-bot">
+                        <div class="logo">
+                            <a href="@Url.Action("index", "Home")"><img src="~/Assets/Site/images/logo.png" alt="" /></a>
+                        </div>
+                      
+                        <div class="search-bar">
+                            <form action="@Url.Action("index","Home")" method="get">
+                                <ul>
+                                    <li><input name="search" type="text"></li>
+                                    <input name="searchsubmit" type="image" src="~/Assets/Site/images/search-icon.png" value="Go" id="searchsubmit" class="btn">
+                                </ul>
+                            </form>
+
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    @if (Request.Url.AbsolutePath.ToUpper() == Url.Action("index", "Home").ToUpper() || Request.Url.AbsolutePath.ToUpper() == (Url.Action("index", "Home") + "/Index").ToUpper() || Request.Url.AbsolutePath.ToUpper() == (Url.Action("index", "Home") + "/Home/Index").ToUpper())
+                    {
+
+                        {
+                            DataContext db = new DataContext();
+                            sliders = db.Slider.ToList();
+                        }
+                        if (sliders.Count != 0)
+                        {
+                            <div class="banner">
+                                <div id="wrapper">
+                                    <div class="slider-wrapper theme-default">
+                                        <div id="slider" class="nivoSlider">
+                                            @foreach (Slider item in sliders)
+                                            {
+                                                <img src="@item.url" alt="" />
+
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                   
+                </div>
+                <div class="main">
+                    @RenderBody()
+                </div>
+                <div class="clear"></div>
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="wrap">
+                <div class="copy">
+                    <p>All rights Reserved | Design by <a href="http://w3layouts.com">W3Layouts</a></p>
+                </div>
+                <div class="social">
+                    <ul class="follow_icon">
+                        <li><a href="#" style="opacity: 1;"><img src="~/Assets/Site/images/facebook.png" alt=""></a></li>
+                        <li><a href="#" style="opacity: 1;"><img src="~/Assets/Site/images/twitter.png" alt=""></a></li>
+                        <li><a href="#" style="opacity: 1;"><img src="~/Assets/Site/images/google.png" alt=""></a></li>
+                        <li><a href="#" style="opacity: 1;"><img src="~/Assets/Site/images/feed.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+﻿@using QuanLyBaiHat.Helper;
+@using QuanLyBaiHat.Models;
+@model ICollection<QuanLyBaiHat.Models.BaiHat>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/_LayoutSite.cshtml";
+    var select = "Selected";
+}
+
+<div class="row">
+    <div class="col-md-12" style="padding-bottom:50px">
+       <hr />
+        <form>
+            <div class="col-md-12" style="    padding-bottom: 30px;">
+                <label class="col-md-1">Sort</label>
+                <div class="col-md-2">
+                    <select name="sort" class="form-control">
+                        <option value="Id">Mã bài Hát</option>
+                        <option value="Ten">Tên Bài Hát</option>
+                        <option value="namXB">Năm Xuất Bản</option>
+                        <option value="hangSX">Hãng Sản xuất</option>
+                    </select>
+                </div>  
+                @if (Request["Search"] != null){
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" name="search" value="@Request["search"]" />
+
+                    </div>
+    }
+                <button class="btn btn-info col-md-2" type="submit" style="margin-top:0px">Filter</button>
+                   
+            </div>  
+            <div class="main-top">
+                <div class="section group">
+                    @foreach (QuanLyBaiHat.Models.BaiHat item in Model)
+                    {
+                        <div class="grid_1_of_4 images_1_of_4">
+                            <div class="grid-img">
+                                <img src="@item.img" alt="" />
+                                <a style=" text-align: center;" href="@Url.Action("index","Single",new { id = item.MaBH})"><h3>@item.TenBH</h3></a>
+                                <div style="    font-size: 11px; text-align: center;">Ca Sĩ: @item.CaSi.TenCS</div>
+                            </div>
+                        </div>
+                    }
+                    
+                   @Html.Raw(Paginate.renderForm(ViewBag.paginate))
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

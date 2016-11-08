@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace QuanLyBaiHat.Controllers
 {
+    [PhanQuyen]
     public class MediaController : Controller
     {
         private DataContext db = new DataContext();

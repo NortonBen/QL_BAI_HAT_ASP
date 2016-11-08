@@ -24,5 +24,6 @@ namespace QuanLyBaiHat.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Media> Media { get; set; }
+        public DbSet<Slider> Slider { get; set; }
     }
 }

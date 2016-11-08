@@ -10,6 +10,7 @@ using QuanLyBaiHat.Models;
 
 namespace QuanLyBaiHat.Controllers
 {
+    [PhanQuyen]
     public class UserController : Controller
     {
         private DataContext db = new DataContext();
