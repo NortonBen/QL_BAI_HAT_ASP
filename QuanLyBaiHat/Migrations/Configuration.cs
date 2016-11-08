@@ -4,6 +4,8 @@ namespace QuanLyBaiHat.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Mvc;
+    using QuanLyBaiHat.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<QuanLyBaiHat.Models.DataContext>
     {
@@ -26,6 +28,17 @@ namespace QuanLyBaiHat.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.Users.AddOrUpdate(
+                  p => p.Id,
+                  new User
+                  {
+                      Id = 1,
+                      email = "norton0395@gmail.com",
+                      password = "admin",
+                      username = "admin"
+                  }
+                );
 
         }
     }
